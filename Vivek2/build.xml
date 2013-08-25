@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- WARNING: Eclipse auto-generated file.
-              Any modifications will be overwritten.
-              To include a user specific buildfile here, simply create one in the same
-              directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. --><project basedir="." default="build" name="vivek">
+<project basedir="." default="build" name="vivek">
     <property environment="env"/>
     <property name="ECLIPSE_HOME" value="../../../Desktop/Testing/eclipse-jee-indigo-SR2-win32/eclipse"/>
     <property name="debuglevel" value="source,lines,vars"/>
@@ -18,7 +14,7 @@
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="src">
-                <exclude name="**/*.java"/>
+                <exclude name="**/*Test.java"/>
             </fileset>
         </copy>
     </target>
@@ -49,4 +45,10 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
+    <jar destfile="${jar.file}" 
+         basedir="${build.dir}" 
+         manifest="${manifest.file}">
+         <fileset dir="${classes.dir}" includes="**/*.class" />
+         <fileset dir="${lib.dir}" includes="**/*.jar" />
+     </jar>
 </project>
